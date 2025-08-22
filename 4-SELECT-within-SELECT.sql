@@ -158,7 +158,8 @@ WHERE area >= ALL (
         FROM world AS w2
         WHERE w2.continent = w2.continent
             AND area > 0
-    )
+    );
+
 -- 8. First country of each continent (alphabetically)
 -- List each continent and the name of the country that comes first alphabetically.
 SELECT continent,
