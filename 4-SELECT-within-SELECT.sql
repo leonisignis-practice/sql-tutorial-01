@@ -236,19 +236,20 @@ WHERE continent IN (
 SELECT name,
     continent
 FROM world AS w1
-WHERE population > 3 ALL (
-        SELECT population
+WHERE population > ALL (
+        SELECT 3 * population
         FROM world AS w2
         WHERE w1.continent = w2.continent
             AND w1.name != w2.name
             AND w2.population > 0
-    )
+    );
+
 SELECT name,
     continent
 FROM world x
-WHERE population > 3 * ALL (
-        SELECT population
+WHERE population > ALL (
+        SELECT 3 * population
         FROM world y
         WHERE y.continent = x.continent
-            AND population > 0
+            AND x.name <> y.name
     );
